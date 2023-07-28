@@ -65,6 +65,7 @@ namespace me.cqp.luohuaming.Dice.Code.OrderFunctions
                 Quote = true
             };
             msg = msg.Replace(CQApi.CQCode_At(MainSave.QQ).ToString(), "").Replace("?", "").Replace("？", "").Replace("呢", "").Replace("我是", "");
+            msg = msg.Replace("你", "@@").Replace("我", "你").Replace("@@", "我");
             string[] args = msg.Split(new string[] { "还是", "or", "OR", "Or" }, StringSplitOptions.RemoveEmptyEntries);
             if (args.Length == 0)
             {
