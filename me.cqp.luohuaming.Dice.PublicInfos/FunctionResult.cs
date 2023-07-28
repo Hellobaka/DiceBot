@@ -34,5 +34,6 @@ namespace me.cqp.luohuaming.Dice.PublicInfos
         /// 处理情况,作用自己发挥
         /// </summary>
         public bool HandlingFlag { get; set; } = true;
+        public bool Quote { get; set; }
     }
 }

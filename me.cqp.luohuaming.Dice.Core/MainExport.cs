@@ -23,7 +23,14 @@ namespace me.cqp.luohuaming.Dice.Core
                 {
                     foreach (var sendMsg in item.MsgToSend)
                     {
-                        e.CQApi.SendGroupMessage(item.SendID, sendMsg);
+                        if (item.Quote)
+                        {
+                            e.CQApi.SendGroupQuoteMessage(item.SendID, e.Message.Id, sendMsg);
+                        }
+                        else
+                        {
+                            e.CQApi.SendGroupMessage(item.SendID, sendMsg);
+                        }
                     }
                 }
             }

@@ -59,6 +59,7 @@ namespace me.cqp.luohuaming.Dice.Code.OrderFunctions
             SendText sendText = new SendText
             {
                 SendID = id,
+                Quote = true
             };
             msg = msg.Trim().ToLower().Replace("。", ".");
             if (!Regex.IsMatch(msg, "^r[\\d\\.]*$") && !Regex.IsMatch(msg, "^[\\d]+d[\\d\\.]+$"))
@@ -154,7 +155,7 @@ namespace me.cqp.luohuaming.Dice.Code.OrderFunctions
                 {
                     sum = $"\nSum: {diceResult.Sum():f4} Avg: {diceResult.Average():f4} Min: {diceResult.Min():f4} Max: {diceResult.Max():f4}";
                 }
-                sendText.MsgToSend.Add($"{msg} = {string.Join(",", result)}{sum}");
+                sendText.MsgToSend.Add($"{string.Join(",", result)}{sum}");
             }
             return sendText;
         }

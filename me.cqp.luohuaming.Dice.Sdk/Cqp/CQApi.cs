@@ -408,6 +408,25 @@ namespace me.cqp.luohuaming.Dice.Sdk.Cqp
 				msgHandle.Free ();
 			}
 		}
+		public QQMessage SendGroupQuoteMessage (long groupId, int quoteId, params object[] message)
+		{
+			if (groupId < Group.MinValue)
+			{
+				throw new ArgumentOutOfRangeException ("groupId");
+			}
+
+			string sendMsg = message.ToSendString ();
+			GCHandle msgHandle = sendMsg.GetStringGCHandle (CQApi.DefaultEncoding);
+			try
+			{
+				int msgId = CQP.CQ_sendGroupQuoteMsg (this.AppInfo.AuthCode, groupId, quoteId, msgHandle.AddrOfPinnedObject ());
+				return new QQMessage (this, msgId, sendMsg, false);
+			}
+			finally
+			{
+				msgHandle.Free ();
+			}
+		}
 		/// <summary>
 		/// 发送私聊消息
 		/// </summary>
