@@ -16,5 +16,6 @@ namespace me.cqp.luohuaming.Dice.PublicInfos
         public static string AppDirectory { get; set; }
         public static string ImageDirectory { get; set; }
         public static Random Random { get; set; } = new Random();
+        public static long QQ { get; set; }
     }
 }

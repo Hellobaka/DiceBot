@@ -15,6 +15,7 @@ namespace me.cqp.luohuaming.Dice.Code
             MainSave.CQApi = e.CQApi;
             MainSave.CQLog = e.CQLog;
             MainSave.ImageDirectory = CommonHelper.GetAppImageDirectory();
+            MainSave.QQ = e.CQApi.GetLoginQQ();
             foreach (var item in Assembly.GetAssembly(typeof(Event_GroupMessage)).GetTypes())
             {
                 if (item.IsInterface)
