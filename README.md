@@ -1,5 +1,5 @@
 # DiceBot
-
+需要Another-Mirai-Native 1.6.4以上
 ## 使用流程
 > r
 - r => [1, 6] => 3
