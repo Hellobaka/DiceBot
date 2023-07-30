@@ -90,7 +90,10 @@ namespace me.cqp.luohuaming.Dice.Code.OrderFunctions
             }
             else
             {
-                result = args.OrderBy(x => Guid.NewGuid()).First();
+                double randomResult = MainSave.Random.NextDouble();
+                int index = (int)(randomResult * args.Length);
+                index = Math.Min(index, args.Length);
+                result = args[index];
                 OrObjects.Add(new OrObject
                 {
                     Msg = args,
@@ -98,6 +101,7 @@ namespace me.cqp.luohuaming.Dice.Code.OrderFunctions
                     Result = result,
                     Timeout = 0
                 });
+                // result += $"random={randomResult}";
             }
             result = result.Trim();
             sendText.MsgToSend.Add(result);
