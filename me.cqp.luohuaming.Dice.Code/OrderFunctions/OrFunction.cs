@@ -15,7 +15,7 @@ namespace me.cqp.luohuaming.Dice.Code.OrderFunctions
 
         public string GetOrderStr() => "";
 
-        public bool Judge(string destStr) => (destStr.Contains("还是") || destStr.ToLower().Contains("or")) && destStr.Contains(CQApi.CQCode_At(MainSave.QQ).ToString());
+        public bool Judge(string destStr) => (destStr.Contains("还是") || destStr.ToLower().Contains("or"));
 
         private bool Cycling { get; set; } = false;
 
@@ -23,6 +23,10 @@ namespace me.cqp.luohuaming.Dice.Code.OrderFunctions
 
         public FunctionResult Progress(CQGroupMessageEventArgs e)
         {
+            if (e.Message.Text.Contains(CQApi.CQCode_At(MainSave.QQ).ToString()) is false)
+            {
+                return new FunctionResult();
+            }
             FunctionResult result = new FunctionResult
             {
                 Result = true,
